@@ -108,35 +108,6 @@
           <el-input v-model="bookForm.location" placeholder="请输入馆藏位置" />
         </el-form-item>
         
-        <el-form-item label="封面图片">
-          <div class="upload-container">
-            <el-upload
-              v-model:file-list="fileList"
-              action="#"
-              :auto-upload="false"
-              :limit="1"
-              accept="image/*"
-              @change="handleFileSelect"
-            >
-              <template #trigger>
-                <el-button type="primary">选择图片</el-button>
-</template>
-              <template #tip>
-                <div style="margin-top:8px; color:#909399; font-size:12px">
-                  支持 jpg、png、gif、webp 格式，文件大小不超过 16MB
-                </div>
-</template>
-            </el-upload>
-            
-            <div v-if="previewUrl" style="margin-top:10px">
-              <el-image
-                :src="previewUrl"
-                fit="cover"
-                style="width:100px; height:140px; border-radius:4px"
-              />
-            </div>
-          </div>
-        </el-form-item>
         
         <el-form-item label="描述">
           <el-input

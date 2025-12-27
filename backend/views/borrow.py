@@ -41,7 +41,6 @@ def borrow_book(payload, book_id):
     )
     
     db.session.add(borrow_record)
-    book.stock -= 1
     
     # 添加通知
     notification = Notification(
@@ -79,7 +78,7 @@ def return_book(payload, record_id):
     borrow_record.status = 'returned'
     
     book = borrow_record.book
-    book.stock += 1
+
     
     # 添加通知
     notification = Notification(
