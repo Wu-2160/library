@@ -18,9 +18,9 @@ class Config:
 class DevConfig(Config):
     """开发配置"""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Wu20050612!@localhost: 3306/library_system'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost: 3306/library_system'
 
 class ProdConfig(Config):
     """生产配置"""
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'mysql+pymysql://root:Wu20050612!@localhost:3306/library_system')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'mysql+pymysql://root:123456@localhost:3306/library_system')
