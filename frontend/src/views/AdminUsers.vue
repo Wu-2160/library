@@ -11,11 +11,11 @@
             @input="searchUsers"
           >
             <template #prefix>
-              <i class="el-icon-search"></i>
-</template>
+              <el-icon><Search /></el-icon>
+            </template>
           </el-input>
         </div>
-</template>
+      </template>
       
       <el-table
         :data="users"
@@ -30,16 +30,16 @@
         <el-table-column prop="role" label="角色" width="100">
           <template #default="{ row }">
             <el-tag :type="row.role === 'admin' ? 'danger' : 'success'">
-              {{ row.role === 'admin' ?  '管理员' : '普通用户' }}
+              {{ row.role === 'admin' ? '管理员' : '普通用户' }}
             </el-tag>
-</template>
+          </template>
         </el-table-column>
         <el-table-column prop="status" label="状态" width="100">
           <template #default="{ row }">
             <el-tag :type="row.status === 'active' ? 'success' : 'danger'">
               {{ row.status === 'active' ? '正常' : '冻结' }}
             </el-tag>
-</template>
+          </template>
         </el-table-column>
         <el-table-column label="操作" width="150" fixed="right">
           <template #default="{ row }">
@@ -49,7 +49,9 @@
               size="small"
               @click="freezeUser(row.id)"
               :loading="freezingId === row.id"
+              plain
             >
+              <el-icon><Lock /></el-icon>
               冻结
             </el-button>
             <el-button
@@ -58,10 +60,12 @@
               size="small"
               @click="unfreezeUser(row.id)"
               :loading="freezingId === row.id"
+              plain
             >
+              <el-icon><Unlock /></el-icon>
               解冻
             </el-button>
-</template>
+          </template>
         </el-table-column>
       </el-table>
       
@@ -83,6 +87,11 @@
 import { ref, reactive, onMounted } from 'vue'
 import { getAllUsers, freezeUser as freezeUserApi, unfreezeUser as unfreezeUserApi } from '@/api/admin'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import {
+  Search,
+  Lock,
+  Unlock
+} from '@element-plus/icons-vue'
 
 const users = ref([])
 const loading = ref(false)
@@ -91,7 +100,7 @@ const freezingId = ref(null)
 
 const pagination = reactive({
   page: 1,
-  per_page:  10,
+  per_page: 10,
   total: 0
 })
 
@@ -122,10 +131,12 @@ const searchUsers = () => {
 
 const freezeUser = async (userId) => {
   try {
-    await ElMessageBox.confirm('确定冻结此用户吗？', '提示', {
+    await ElMessageBox.confirm('确定冻结此用户吗？冻结后用户将无法登录系统', '确认冻结', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
-      type: 'warning'
+      type: 'warning',
+      confirmButtonClass: 'freeze-confirm-btn',
+      cancelButtonClass: 'freeze-cancel-btn'
     })
     
     freezingId.value = userId
@@ -176,5 +187,20 @@ onMounted(() => {
 
 .card-header {
   width: 100%;
+}
+
+:deep(.freeze-confirm-btn) {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+
+:deep(.freeze-confirm-btn:hover) {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+:deep(.freeze-cancel-btn) {
+  font-weight: 500;
 }
 </style>

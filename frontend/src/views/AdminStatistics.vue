@@ -87,7 +87,7 @@ const borrowReturnRate = ref(0)
 const fetchStatistics = async () => {
   try {
     // 获取热门图书
-    const booksRes = await getTopBooksStatistics({ limit: 10 })
+    const booksRes = await getTopBooksStatistics({ limit:10 })
     if (booksRes.code === 200) {
       topBooks.value = booksRes.data
     }
@@ -121,35 +121,35 @@ onMounted(() => {
 
 <style scoped>
 .admin-statistics {
-  padding-bottom: 20px;
+  padding-bottom:20px;
 }
 
 .stats-row {
-  margin-bottom: 20px;
+  margin-bottom:20px;
 }
 
 .stat-card {
-  text-align: center;
+  text-align:center;
 }
 
 .stat-number {
-  font-size: 32px;
-  font-weight: bold;
-  color: #667eea;
-  margin:  20px 0 10px;
+  font-size:32px;
+  font-weight:bold;
+  color:#667eea;
+  margin:20px 0 10px;
 }
 
 .stat-label {
-  color: #606266;
-  font-size:  14px;
-  margin-bottom: 20px;
+  color:#606266;
+  font-size:14px;
+  margin-bottom:20px;
 }
 
 .chart-card {
-  margin-bottom: 20px;
+  margin-bottom:20px;
 }
 
 .card-header {
-  width: 100%;
+  width:100%;
 }
 </style>

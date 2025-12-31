@@ -1,4 +1,4 @@
-[file name]: AdminBooks.vue
+[file name]:AdminBooks.vue
 <template>
   <div class="admin-books">
     <!-- 页面标题和统计 -->
@@ -61,9 +61,9 @@
       <div v-loading="loading" element-loading-text="加载中..." element-loading-spinner="el-icon-loading">
         <el-table 
           :data="books" 
-          :header-cell-style="{ background: '#f8fafc', color: '#475569', fontWeight: '600' }"
-          :cell-style="{ verticalAlign: 'middle' }"
-          style="width: 100%"
+          :header-cell-style="{ background:'#f8fafc', color:'#475569', fontWeight:'600' }"
+          :cell-style="{ verticalAlign:'middle' }"
+          style="width:100%"
           stripe
         >
           <el-table-column prop="title" label="书名" width="220">
@@ -130,14 +130,14 @@
           
           <el-table-column prop="stock" label="库存" width="100" align="center">
             <template #default="{ row }">
-              <div class="stock-cell" :class="{ 'low-stock': row.stock <= 5 && row.stock > 0, 'no-stock': row.stock === 0 }">
+              <div class="stock-cell" :class="{ 'low-stock':row.stock <= 5 && row.stock > 0, 'no-stock':row.stock === 0 }">
                 <el-tag 
                   :type="getStockType(row.stock)"
                   size="small"
                   effect="light"
                   class="stock-tag"
                 >
-                  {{ row.stock === 0 ? '无库存' : `${row.stock}本` }}
+                  {{ row.stock === 0 ? '无库存' :`${row.stock}本` }}
                 </el-tag>
                 <div v-if="row.stock <= 5 && row.stock > 0" class="stock-warning">
                   <el-icon><Warning /></el-icon>
@@ -218,7 +218,7 @@
     <!-- 添加/编辑图书对话框 -->
     <el-dialog 
       v-model="showAddDialog" 
-      :title="editingBook ? '编辑图书信息' : '添加新书'"
+      :title="editingBook ? '编辑图书信息' :'添加新书'"
       width="800px"
       :close-on-click-modal="false"
       class="book-dialog"
@@ -278,7 +278,7 @@
                     v-model="bookForm.category_id" 
                     placeholder="选择分类"
                     size="large"
-                    style="width: 100%"
+                    style="width:100%"
                   >
                     <el-option
                       v-for="cat in categories"
@@ -305,7 +305,7 @@
                         :precision="2"
                         controls-position="right"
                         size="large"
-                        style="width: 100%"
+                        style="width:100%"
                       />
                     </el-form-item>
                   </el-col>
@@ -316,7 +316,7 @@
                         :min="0"
                         controls-position="right"
                         size="large"
-                        style="width: 100%"
+                        style="width:100%"
                       />
                     </el-form-item>
                   </el-col>
@@ -359,7 +359,7 @@
             size="large"
             class="submit-btn"
           >
-            {{ editingBook ? '更新图书信息' : '添加新书' }}
+            {{ editingBook ? '更新图书信息' :'添加新书' }}
           </el-button>
         </div>
       </template>
@@ -401,31 +401,31 @@ const getCoverUrl = (book) => {
 }
 
 const pagination = reactive({
-  page: 1,
-  per_page: 10,
-  total: 0
+  page:1,
+  per_page:10,
+  total:0
 })
 
 const bookForm = reactive({
-  title: '',
-  author: '',
-  isbn: '',
-  publisher: '',
-  price: 0,
-  stock: 1,
-  category_id: null,
-  location: '',
-  description: ''
+  title:'',
+  author:'',
+  isbn:'',
+  publisher:'',
+  price:0,
+  stock:1,
+  category_id:null,
+  location:'',
+  description:''
 })
 
 // 分类类型映射
 const getCategoryType = (category) => {
   const typeMap = {
-    '文学': 'primary',
-    '科技': 'success',
-    '历史': 'warning',
-    '艺术': 'danger',
-    '教育': 'info'
+    '文学':'primary',
+    '科技':'success',
+    '历史':'warning',
+    '艺术':'danger',
+    '教育':'info'
   }
   return typeMap[category] || 'info'
 }
@@ -455,9 +455,9 @@ const fetchBooks = async () => {
   try {
     loading.value = true
     const res = await getBooks({
-      page: pagination.page,
-      per_page: pagination.per_page,
-      keyword: searchKeyword.value
+      page:pagination.page,
+      per_page:pagination.per_page,
+      keyword:searchKeyword.value
     })
     
     if (res.code === 200) {
@@ -536,7 +536,7 @@ const submitBook = async () => {
     }
     
     if (res.code === 200 || res.code === 201) {
-      ElMessage.success(editingBook.value ? '图书信息更新成功' : '新书添加成功')
+      ElMessage.success(editingBook.value ? '图书信息更新成功' :'新书添加成功')
       showAddDialog.value = false
       editingBook.value = null
       resetForm()
@@ -558,11 +558,11 @@ const deleteBook = async (bookId) => {
       '确定要删除这本图书吗？此操作不可恢复。',
       '删除确认',
       {
-        confirmButtonText: '确认删除',
-        cancelButtonText: '取消',
-        type: 'warning',
-        confirmButtonClass: 'delete-confirm-btn',
-        cancelButtonClass: 'delete-cancel-btn'
+        confirmButtonText:'确认删除',
+        cancelButtonText:'取消',
+        type:'warning',
+        confirmButtonClass:'delete-confirm-btn',
+        cancelButtonClass:'delete-cancel-btn'
       }
     )
     
@@ -600,488 +600,488 @@ onMounted(() => {
 
 <style scoped>
 .admin-books {
-  padding: 24px;
-  background: #f8fafc;
-  min-height: calc(100vh - 64px);
+  padding:24px;
+  background:#f8fafc;
+  min-height:calc(100vh - 64px);
 }
 
 /* 页面标题 */
 .page-header {
-  margin-bottom: 24px;
+  margin-bottom:24px;
 }
 
 .header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
 }
 
 .header-left .page-title {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-  color: #1e293b;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  margin:0;
+  font-size:28px;
+  font-weight:700;
+  color:#1e293b;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .title-icon {
-  font-size: 32px;
+  font-size:32px;
 }
 
 .page-subtitle {
-  margin: 8px 0 0;
-  color: #64748b;
-  font-size: 14px;
+  margin:8px 0 0;
+  color:#64748b;
+  font-size:14px;
 }
 
 .stats-cards {
-  display: flex;
-  gap: 16px;
+  display:flex;
+  gap:16px;
 }
 
 .stat-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  min-width: 140px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  min-width:140px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  display:flex;
+  align-items:center;
+  gap:16px;
 }
 
 .stat-icon {
-  font-size: 32px;
+  font-size:32px;
 }
 
 .stat-info {
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 }
 
 .stat-number {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1e293b;
-  line-height: 1.2;
+  font-size:24px;
+  font-weight:700;
+  color:#1e293b;
+  line-height:1.2;
 }
 
 .stat-label {
-  font-size: 14px;
-  color: #64748b;
+  font-size:14px;
+  color:#64748b;
 }
 
 /* 操作栏 */
 .action-bar {
-  margin-bottom: 24px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  margin-bottom:24px;
+  border-radius:12px;
+  border:1px solid #e2e8f0;
 }
 
 .action-bar-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
 }
 
 .search-container {
-  flex: 1;
-  max-width: 400px;
+  flex:1;
+  max-width:400px;
 }
 
 .search-input {
-  --el-input-border-radius: 10px;
-  --el-input-bg-color: #f8fafc;
-  --el-input-border-color: #e2e8f0;
+  --el-input-border-radius:10px;
+  --el-input-bg-color:#f8fafc;
+  --el-input-border-color:#e2e8f0;
 }
 
 .search-input:hover {
-  --el-input-border-color: #cbd5e1;
+  --el-input-border-color:#cbd5e1;
 }
 
 .search-input:focus-within {
-  --el-input-border-color: #3b82f6;
+  --el-input-border-color:#3b82f6;
 }
 
 .search-icon {
-  color: #94a3b8;
+  color:#94a3b8;
 }
 
 .add-button {
-  --el-button-border-radius: 10px;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border: none;
-  padding: 12px 24px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
+  --el-button-border-radius:10px;
+  background:linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border:none;
+  padding:12px 24px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  transition:all 0.3s ease;
 }
 
 .add-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 /* 图书表格 */
 .books-table-card {
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  overflow: hidden;
+  border-radius:12px;
+  border:1px solid #e2e8f0;
+  overflow:hidden;
 }
 
 /* 表格单元格样式 */
 .book-title-cell {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .book-cover-small {
-  width: 48px;
-  height: 64px;
-  border-radius: 6px;
-  overflow: hidden;
-  background: #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width:48px;
+  height:64px;
+  border-radius:6px;
+  overflow:hidden;
+  background:#f1f5f9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
 }
 
 .cover-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .image-error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  color: #94a3b8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  color:#94a3b8;
 }
 
 .no-cover {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  color: #cbd5e1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  color:#cbd5e1;
 }
 
 .book-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
 }
 
 .title-text {
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  font-weight:600;
+  color:#1e293b;
+  margin-bottom:4px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
 }
 
 .author-text {
-  font-size: 12px;
-  color: #64748b;
+  font-size:12px;
+  color:#64748b;
 }
 
 .isbn-cell {
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
 }
 
 .isbn-tag {
-  --el-tag-bg-color: #f1f5f9;
-  --el-tag-text-color: #475569;
-  border: 1px dashed #cbd5e1;
-  font-family: 'Monaco', 'Menlo', monospace;
-  font-size: 12px;
+  --el-tag-bg-color:#f1f5f9;
+  --el-tag-text-color:#475569;
+  border:1px dashed #cbd5e1;
+  font-family:'Monaco', 'Menlo', monospace;
+  font-size:12px;
 }
 
 .category-tag {
-  font-weight: 500;
+  font-weight:500;
 }
 
 .price-cell {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:2px;
 }
 
 .price-symbol {
-  font-size: 12px;
-  color: #64748b;
+  font-size:12px;
+  color:#64748b;
 }
 
 .price-number {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1e293b;
+  font-size:16px;
+  font-weight:600;
+  color:#1e293b;
 }
 
 .stock-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
 }
 
 .stock-tag {
-  font-weight: 500;
+  font-weight:500;
 }
 
 .stock-warning {
-  font-size: 11px;
-  color: #f59e0b;
-  display: flex;
-  align-items: center;
-  gap: 2px;
+  font-size:11px;
+  color:#f59e0b;
+  display:flex;
+  align-items:center;
+  gap:2px;
 }
 
 .low-stock .stock-tag {
-  animation: pulse 2s infinite;
+  animation:pulse 2s infinite;
 }
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 1;
+    opacity:1;
   }
   50% {
-    opacity: 0.7;
+    opacity:0.7;
   }
 }
 
 .status-cell {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
 }
 
 .status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
 }
 
 .status-available {
-  background-color: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  background-color:#10b981;
+  box-shadow:0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
 .status-warning {
-  background-color: #f59e0b;
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
-  animation: pulse 2s infinite;
+  background-color:#f59e0b;
+  box-shadow:0 0 0 2px rgba(245, 158, 11, 0.2);
+  animation:pulse 2s infinite;
 }
 
 .status-out {
-  background-color: #ef4444;
-  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+  background-color:#ef4444;
+  box-shadow:0 0 0 2px rgba(239, 68, 68, 0.2);
 }
 
 .action-buttons-cell {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
 }
 
 .action-button {
-  --el-button-border-radius: 50%;
-  --el-button-hover-bg-color: transparent;
-  transition: all 0.2s ease;
+  --el-button-border-radius:50%;
+  --el-button-hover-bg-color:transparent;
+  transition:all 0.2s ease;
 }
 
 .edit-btn {
-  --el-button-bg-color: #dbeafe;
-  --el-button-text-color: #3b82f6;
-  --el-button-hover-border-color: #3b82f6;
+  --el-button-bg-color:#dbeafe;
+  --el-button-text-color:#3b82f6;
+  --el-button-hover-border-color:#3b82f6;
 }
 
 .view-btn {
-  --el-button-bg-color: #f0f9ff;
-  --el-button-text-color: #0ea5e9;
-  --el-button-hover-border-color: #0ea5e9;
+  --el-button-bg-color:#f0f9ff;
+  --el-button-text-color:#0ea5e9;
+  --el-button-hover-border-color:#0ea5e9;
 }
 
 .delete-btn {
-  --el-button-bg-color: #fee2e2;
-  --el-button-text-color: #ef4444;
-  --el-button-hover-border-color: #ef4444;
+  --el-button-bg-color:#fee2e2;
+  --el-button-text-color:#ef4444;
+  --el-button-hover-border-color:#ef4444;
 }
 
 /* 分页 */
 .pagination-container {
-  padding: 24px 0 8px;
-  display: flex;
-  justify-content: center;
+  padding:24px 0 8px;
+  display:flex;
+  justify-content:center;
 }
 
 :deep(.el-pagination.is-background .el-pager li) {
-  border-radius: 8px;
-  margin: 0 4px;
+  border-radius:8px;
+  margin:0 4px;
 }
 
 :deep(.el-pagination.is-background .el-pager li:not(.is-disabled).is-active) {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background:linear-gradient(135deg, #3b82f6, #1d4ed8);
 }
 
 /* 对话框 */
 .book-dialog :deep(.el-dialog) {
-  border-radius: 16px;
-  overflow: hidden;
+  border-radius:16px;
+  overflow:hidden;
 }
 
 .book-dialog :deep(.el-dialog__header) {
-  padding: 24px 24px 0;
-  margin: 0;
+  padding:24px 24px 0;
+  margin:0;
 }
 
 .book-dialog :deep(.el-dialog__title) {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1e293b;
+  font-size:20px;
+  font-weight:600;
+  color:#1e293b;
 }
 
 .book-dialog :deep(.el-dialog__body) {
-  padding: 24px;
+  padding:24px;
 }
 
 .dialog-content {
-  max-height: 60vh;
-  overflow-y: auto;
+  max-height:60vh;
+  overflow-y:auto;
 }
 
 .form-section {
-  padding: 20px;
-  background: #f8fafc;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  padding:20px;
+  background:#f8fafc;
+  border-radius:12px;
+  border:1px solid #e2e8f0;
 }
 
 .section-title {
-  margin: 0 0 20px 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1e293b;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #e2e8f0;
+  margin:0 0 20px 0;
+  font-size:16px;
+  font-weight:600;
+  color:#1e293b;
+  padding-bottom:12px;
+  border-bottom:2px solid #e2e8f0;
 }
 
 :deep(.el-form-item) {
-  margin-bottom: 20px;
+  margin-bottom:20px;
 }
 
 :deep(.el-form-item__label) {
-  font-weight: 500;
-  color: #475569;
-  margin-bottom: 8px;
-  padding-bottom: 0;
+  font-weight:500;
+  color:#475569;
+  margin-bottom:8px;
+  padding-bottom:0;
 }
 
 :deep(.el-input) {
-  --el-input-border-radius: 8px;
-  --el-input-bg-color: white;
-  --el-input-border-color: #e2e8f0;
+  --el-input-border-radius:8px;
+  --el-input-bg-color:white;
+  --el-input-border-color:#e2e8f0;
 }
 
 :deep(.el-input__inner) {
-  height: 44px;
+  height:44px;
 }
 
 :deep(.el-input-number) {
-  --el-input-border-radius: 8px;
-  --el-input-bg-color: white;
+  --el-input-border-radius:8px;
+  --el-input-bg-color:white;
 }
 
 :deep(.el-textarea__inner) {
-  border-radius: 8px;
-  border-color: #e2e8f0;
+  border-radius:8px;
+  border-color:#e2e8f0;
 }
 
 .dialog-footer {
-  padding: 24px;
-  border-top: 1px solid #e2e8f0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
+  padding:24px;
+  border-top:1px solid #e2e8f0;
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border: none;
-  padding: 12px 32px;
-  font-weight: 600;
+  background:linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border:none;
+  padding:12px 32px;
+  font-weight:600;
 }
 
 :deep(.delete-confirm-btn) {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  border: none;
-  color: white;
-  font-weight: 600;
+  background:linear-gradient(135deg, #ef4444, #dc2626);
+  border:none;
+  color:white;
+  font-weight:600;
 }
 
 :deep(.delete-confirm-btn:hover) {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  background:linear-gradient(135deg, #dc2626, #b91c1c);
 }
 
 :deep(.delete-cancel-btn) {
-  font-weight: 500;
+  font-weight:500;
 }
 
 /* 响应式设计 */
-@media (max-width: 992px) {
+@media (max-width:992px) {
   .header-content {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction:column;
+    align-items:flex-start;
   }
   
   .stats-cards {
-    width: 100%;
+    width:100%;
   }
   
   .stat-card {
-    flex: 1;
+    flex:1;
   }
   
   .action-bar-content {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction:column;
+    align-items:stretch;
   }
   
   .search-container {
-    max-width: 100%;
+    max-width:100%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
   .admin-books {
-    padding: 16px;
+    padding:16px;
   }
   
   .book-dialog :deep(.el-dialog) {
-    width: 95%;
-    margin: 20px auto;
+    width:95%;
+    margin:20px auto;
   }
   
   .form-section {
-    padding: 16px;
+    padding:16px;
   }
 }
 </style>
