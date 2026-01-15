@@ -41,7 +41,7 @@
     </el-row>
     
     <!-- 快捷导航 -->
-    <el-row :gutter="20" style="margin-top:20px">
+    <el-row :gutter="20" style="margin-top: 20px">
       <el-col :xs="24" :sm="12" :md="6">
         <el-card class="nav-card" @click="goToPage('/admin/users')">
           <div class="nav-icon">
@@ -96,10 +96,10 @@ import {
 const router = useRouter()
 
 const stats = ref({
-  total_users:0,
-  total_books:0,
-  currently_borrowed:0,
-  overdue_books:0
+  total_users: 0,
+  total_books: 0,
+  currently_borrowed: 0,
+  overdue_books: 0
 })
 
 const goToPage = (path) => {
@@ -124,75 +124,75 @@ onMounted(() => {
 
 <style scoped>
 .admin-dashboard {
-  padding-bottom:20px;
+  padding-bottom: 20px;
 }
 
 .stats-row {
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 .stat-card {
-  text-align:center;
-  cursor:pointer;
-  transition:all 0.3s;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .stat-card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .stat-icon {
-  font-size:32px;
-  margin:10px 0;
-  color:#3b82f6;
+  font-size: 32px;
+  margin: 10px 0;
+  color: #3b82f6;
 }
 
 .stat-icon .el-icon {
-  font-size:32px;
+  font-size: 32px;
 }
 
 .stat-number {
-  font-size:28px;
-  font-weight:bold;
-  color:#1e293b;
-  margin:10px 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #1e293b;
+  margin: 10px 0;
 }
 
 .stat-label {
-  color:#64748b;
-  font-size:14px;
-  margin-bottom:10px;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .nav-card {
-  text-align:center;
-  cursor:pointer;
-  transition:all 0.3s;
-  border:1px solid #e2e8f0;
-  border-radius:12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
 }
 
 .nav-card:hover {
-  transform:scale(1.05);
-  box-shadow:0 10px 30px rgba(0, 0, 0, 0.15);
-  border-color:#3b82f6;
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-color: #3b82f6;
 }
 
 .nav-icon {
-  font-size:40px;
-  margin:15px 0 10px;
-  color:#3b82f6;
+  font-size: 40px;
+  margin: 15px 0 10px;
+  color: #3b82f6;
 }
 
 .nav-icon .el-icon {
-  font-size:40px;
+  font-size: 40px;
 }
 
 .nav-text {
-  font-size:16px;
-  font-weight:600;
-  color:#1e293b;
-  margin-bottom:15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 15px;
 }
 </style>

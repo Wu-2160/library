@@ -2,7 +2,8 @@
 
 要运行本项目
 后端
-# 1、更改backend\config.py中Wu20050612!为你自己的数据库密码
+```bash
+# 1、更改backend\config.py中root之后置换为你自己的数据库密码
 # 2. 进入后端目录
 cd backend
 # 3. 安装依赖
@@ -12,8 +13,9 @@ mysql -u root -p < database.sql
 # 前四步仅在初次构建时进行
 # 5. 启动Flask应用
 python app.py
-
+```
 前端
+```bash
 # 1. 进入前端目录
 cd frontend
 # 2. 安装依赖
@@ -25,17 +27,21 @@ npm run dev
 npm run build
 # 5. 预览生产构建
 npm run preview
-
+```
 若是数据库创建错误
+```bash
 mysql -u root -p
-
 DROP DATABASE IF EXISTS library_system;
-
 EXIT;
+```
 然后再次创建
 
 默认管理员
 账号： admin
 密码： admin123
 
-# 暂时没解决图像显示问题
+# 6. 功能测试(插入上万条数据)
+```bash
+cd backend
+python try.py
+```

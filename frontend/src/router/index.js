@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth'
 const routes = [
   {
     path: '/login',
-    name:  'Login',
+    name: 'Login',
     component: () => import('@/views/Login.vue'),
     meta: { requiresAuth: false }
   },
@@ -27,7 +27,7 @@ const routes = [
       {
         path: 'books/:id',
         name: 'BookDetail',
-        component:  () => import('@/views/BookDetail.vue')
+        component: () => import('@/views/BookDetail.vue')
       },
       {
         path: 'my-borrow',
@@ -45,15 +45,20 @@ const routes = [
         component: () => import('@/views/UserProfile.vue')
       },
       {
+        path: 'notifications', 
+        name: 'Notifications',
+        component: () => import('@/views/Notifications.vue')
+      },
+      {
         path: 'admin/dashboard',
         name: 'AdminDashboard',
-        component:  () => import('@/views/AdminDashboard.vue'),
+        component: () => import('@/views/AdminDashboard.vue'),
         meta: { requiresAdmin: true }
       },
       {
         path: 'admin/users',
         name: 'AdminUsers',
-        component:  () => import('@/views/AdminUsers.vue'),
+        component: () => import('@/views/AdminUsers.vue'),
         meta: { requiresAdmin: true }
       },
       {

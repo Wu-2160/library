@@ -205,7 +205,7 @@ def get_overdue_report(payload):
     
     data = []
     for record, username, title in overdue_records: 
-        overdue_days = (datetime.now(timezone.utc) - record.due_time).days
+        overdue_days = (datetime.utcnow() - record.due_time).days
         data.append({
             'record_id': record.id,
             'username': username,

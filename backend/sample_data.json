@@ -1,0 +1,143 @@
+{
+  "users": [
+    {
+      "username": "reader0001",
+      "password": "123456",
+      "real_name": "读者马华",
+      "email": "reader0001@test.com"
+    },
+    {
+      "username": "reader0002",
+      "password": "123456",
+      "real_name": "读者孙芳",
+      "email": "reader0002@test.com"
+    },
+    {
+      "username": "reader0003",
+      "password": "123456",
+      "real_name": "读者何志",
+      "email": "reader0003@test.com"
+    },
+    {
+      "username": "reader0004",
+      "password": "123456",
+      "real_name": "读者罗平",
+      "email": "reader0004@test.com"
+    },
+    {
+      "username": "reader0005",
+      "password": "123456",
+      "real_name": "读者何伟",
+      "email": "reader0005@test.com"
+    }
+  ],
+  "books": [
+    {
+      "title": "Head First设计模式：精解",
+      "author": "沈从文",
+      "publisher": "北京大学出版社",
+      "isbn": "978-7-268-36883-49",
+      "stock": 6,
+      "total": 7
+    },
+    {
+      "title": "DevOps实践指南",
+      "author": "尤瓦尔·赫拉利",
+      "publisher": "北京大学出版社",
+      "isbn": "978-7-413-25349-26",
+      "stock": 14,
+      "total": 17
+    },
+    {
+      "title": "庄子",
+      "author": "雷·达里奥",
+      "publisher": "科学出版社",
+      "isbn": "978-7-657-78681-23",
+      "stock": 1,
+      "total": 3
+    },
+    {
+      "title": "竞争战略：精解",
+      "author": "作者B",
+      "publisher": "中国电力出版社",
+      "isbn": "978-7-763-56636-85",
+      "stock": 9,
+      "total": 13
+    },
+    {
+      "title": "蓝海战略：实战篇",
+      "author": "Eric Freeman",
+      "publisher": "清华大学出版社",
+      "isbn": "978-7-191-22831-12",
+      "stock": 21,
+      "total": 23
+    },
+    {
+      "title": "陶瓷艺术：精解",
+      "author": "勒·柯布西耶",
+      "publisher": "北京大学出版社",
+      "isbn": "978-7-946-41455-7",
+      "stock": 13,
+      "total": 15
+    },
+    {
+      "title": "史记",
+      "author": "威廉·麦克尼尔",
+      "publisher": "上海人民出版社",
+      "isbn": "978-7-489-23668-7",
+      "stock": 9,
+      "total": 10
+    },
+    {
+      "title": "罪与罚",
+      "author": "路遥",
+      "publisher": "中国电力出版社",
+      "isbn": "978-7-373-42992-3",
+      "stock": 11,
+      "total": 13
+    },
+    {
+      "title": "纯粹理性批判",
+      "author": "卢梭",
+      "publisher": "清华大学出版社",
+      "isbn": "978-7-567-75090-5",
+      "stock": 3,
+      "total": 3
+    },
+    {
+      "title": "第二次世界大战回忆录",
+      "author": "司马光",
+      "publisher": "中信出版社",
+      "isbn": "978-7-860-31853-7",
+      "stock": 7,
+      "total": 7
+    }
+  ],
+  "admin": {
+    "username": "admin",
+    "password": "123456",
+    "real_name": "管理员"
+  },
+  "categories": [
+    {
+      "name": "文学",
+      "description": "各类文学作品"
+    },
+    {
+      "name": "技术",
+      "description": "计算机与技术类书籍"
+    },
+    {
+      "name": "历史",
+      "description": "历史相关著作"
+    },
+    {
+      "name": "哲学",
+      "description": "哲学思想著作"
+    },
+    {
+      "name": "艺术",
+      "description": "艺术与设计"
+    }
+  ]
+}
