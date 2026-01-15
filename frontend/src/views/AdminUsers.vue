@@ -6,7 +6,7 @@
           <el-input
             v-model="searchKeyword"
             placeholder="搜索用户名/姓名"
-            style="width: 300px"
+            style="width:300px"
             clearable
             @input="searchUsers"
           >
@@ -20,7 +20,7 @@
       <el-table
         :data="users"
         stripe
-        style="width: 100%"
+        style="width:100%"
         v-loading="loading"
       >
         <el-table-column prop="username" label="用户名" width="120" />
@@ -29,15 +29,15 @@
         <el-table-column prop="phone" label="电话" width="120" />
         <el-table-column prop="role" label="角色" width="100">
           <template #default="{ row }">
-            <el-tag :type="row.role === 'admin' ? 'danger' : 'success'">
-              {{ row.role === 'admin' ? '管理员' : '普通用户' }}
+            <el-tag :type="row.role === 'admin' ? 'danger' :'success'">
+              {{ row.role === 'admin' ? '管理员' :'普通用户' }}
             </el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="status" label="状态" width="100">
           <template #default="{ row }">
-            <el-tag :type="row.status === 'active' ? 'success' : 'danger'">
-              {{ row.status === 'active' ? '正常' : '冻结' }}
+            <el-tag :type="row.status === 'active' ? 'success' :'danger'">
+              {{ row.status === 'active' ? '正常' :'冻结' }}
             </el-tag>
           </template>
         </el-table-column>
@@ -77,7 +77,7 @@
         :total="pagination.total"
         layout="total, sizes, prev, pager, next, jumper"
         @change="fetchUsers"
-        style="text-align: center; margin-top: 20px"
+        style="text-align:center; margin-top:20px"
       />
     </el-card>
   </div>
@@ -99,18 +99,18 @@ const searchKeyword = ref('')
 const freezingId = ref(null)
 
 const pagination = reactive({
-  page: 1,
-  per_page: 10,
-  total: 0
+  page:1,
+  per_page:10,
+  total:0
 })
 
 const fetchUsers = async () => {
   try {
     loading.value = true
     const res = await getAllUsers({
-      page: pagination.page,
-      per_page: pagination.per_page,
-      keyword: searchKeyword.value
+      page:pagination.page,
+      per_page:pagination.per_page,
+      keyword:searchKeyword.value
     })
     
     if (res.code === 200) {
@@ -132,11 +132,11 @@ const searchUsers = () => {
 const freezeUser = async (userId) => {
   try {
     await ElMessageBox.confirm('确定冻结此用户吗？冻结后用户将无法登录系统', '确认冻结', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
-      confirmButtonClass: 'freeze-confirm-btn',
-      cancelButtonClass: 'freeze-cancel-btn'
+      confirmButtonText:'确定',
+      cancelButtonText:'取消',
+      type:'warning',
+      confirmButtonClass:'freeze-confirm-btn',
+      cancelButtonClass:'freeze-cancel-btn'
     })
     
     freezingId.value = userId
@@ -182,25 +182,25 @@ onMounted(() => {
 
 <style scoped>
 .admin-users {
-  padding-bottom: 20px;
+  padding-bottom:20px;
 }
 
 .card-header {
-  width: 100%;
+  width:100%;
 }
 
 :deep(.freeze-confirm-btn) {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  border: none;
-  color: white;
-  font-weight: 600;
+  background:linear-gradient(135deg, #ef4444, #dc2626);
+  border:none;
+  color:white;
+  font-weight:600;
 }
 
 :deep(.freeze-confirm-btn:hover) {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  background:linear-gradient(135deg, #dc2626, #b91c1c);
 }
 
 :deep(.freeze-cancel-btn) {
-  font-weight: 500;
+  font-weight:500;
 }
 </style>
